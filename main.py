@@ -1,4 +1,4 @@
-def display_board(board):
+def display_board(board) -> None:
     print("  0   1   2")
     for i, row in enumerate(board):
         print(f"{i} {' | '.join(row)}")
@@ -7,7 +7,7 @@ def display_board(board):
     print("\n")
 
 
-def user_input(board):
+def user_input(board) -> tuple[int, int] | None:
     while True:
         try:
             move_row = int(input("Enter row: "))
@@ -23,11 +23,11 @@ def user_input(board):
             print("Invalid input. Values must be integers.")
 
 
-def make_move(board, row, column, player="X"):
+def make_move(board, row, column, player="X") -> None:
     board[row][column] = player
 
 
-def check_win(board):
+def check_win(board) -> bool:
     for row in board:
         if row[0] == row[1] == row[2] != " ":
             return True
@@ -43,14 +43,14 @@ def check_win(board):
     return False
 
 
-def is_board_full(board):
+def is_board_full(board) -> bool:
     for row in board:
         if " " in row:
             return False
     return True
 
 
-def initialize_board():
+def initialize_board() -> list:
     return [
         [" ", " ", " "],
         [" ", " ", " "],
@@ -58,7 +58,7 @@ def initialize_board():
     ]
 
 
-def play_again():
+def play_again() -> bool:
     while True:
         choice = input("Would you like to play again? (y/n) ").lower().strip()
         if choice in ["y", "yes"]:
